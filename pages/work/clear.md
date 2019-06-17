@@ -1,0 +1,3 @@
+A bit of spec work that won’t ever see the light of day, this project is high­lighted by it’s retina-optimized, mobile-first design. So, if you’ve got one of those fancy Apple machine boxes, give it a look-see.
+
+<dl><dt>Medium:</dt><dd>Web</dd><dt>Skill set:</dt><dd>Pho­to­shop, HTML5, CSS3, jQuery</dd><dt>Fea­tures:</dt><dd>Mobile-first, retina-optimized</dd><dt>Fin­ished:</dt><dd>Decem­ber&nbsp;2012</dd></dl>

@@ -1,0 +1,1 @@
+<section class="details"><h1>Cus­tom Typeface</h1><p>A font inspired by “zee Ger­mans”, as a young Jason Statham would say. More pre­cisely, Wolfen­stein 3D. Com­ing soon to a free font web­site near&nbsp;you.</p><dl><dt>Medium:</dt><dd>Web, Print</dd><dt>Skill set:</dt><dd>Illus­tra­tor, type­face design</dd><dt>Fin­ished:</dt><dd>Decem­ber&nbsp;2012</dd></dl></section>

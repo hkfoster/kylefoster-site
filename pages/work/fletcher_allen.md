@@ -1,0 +1,1 @@
+<section class="details"><h1>Fletcher Allen</h1><p>A mod­ern redesign for one of Vermont’s fore­most Health­care facil­i­ties, fea­tur­ing a full-width slider and plenty of CSS3 good­ies. It’s still being built, so keep an eye&nbsp;out.</p><dl><dt>Medium:</dt><dd>Web</dd><dt>Skill set:</dt><dd>Pho­to­shop</dd><dt>Fin­ished:</dt><dd>Sep­tem­ber&nbsp;2012</dd></dl></section>

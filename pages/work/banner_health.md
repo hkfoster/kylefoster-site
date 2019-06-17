@@ -1,0 +1,1 @@
+<section class="details"><h1>Ban­ner Health</h1><p>An imple­men­ta­tion of one of Medseek’s Patient Por­tals, this project was focused on Banner’s re-branding ini­tia­tive. And blue. Lots and lots of&nbsp;blue.</p><dl><dt>Medium:</dt><dd>Web</dd><dt>Skill set:</dt><dd>Pho­to­shop</dd><dt>Fin­ished:</dt><dd>May 2012</dd></dl></section>

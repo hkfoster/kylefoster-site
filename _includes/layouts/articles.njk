@@ -1,0 +1,10 @@
+---
+layout: layouts/base.njk
+section: articles
+permalink: /articles/index.html
+---
+
+{{ layoutContent | safe }}
+
+{% set articleslist = collections.articles %}
+{% include "components/articleslist.njk" %}

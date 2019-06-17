@@ -1,0 +1,1 @@
+<section class="details"><h1>Coosa Val­ley</h1><p>Another bit of spec work, Coosa Val­ley was a piece focused on mes­sag­ing and pho­tog­ra­phy, as evi­denced by the ludi­crously large hero ban­ner. Full width? You betcha.</p><dl><dt>Medium:</dt><dd>Web</dd><dt>Skill set:</dt><dd>Pho­to­shop</dd><dt>Fin­ished:</dt><dd>Decem­ber&nbsp;2011</dd></dl></section>

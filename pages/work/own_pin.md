@@ -1,0 +1,1 @@
+<section class="details"><h1>Owl Greet­ing&nbsp;Card</h1><p>What can I say? I like owls. And I like thank-yous. Of course I’d make a card com­bin­ing them. Let me know if you want a few ... I’ve got a box full of ‘em in the garage.</p><dl><dt>Medium:</dt><dd>Print</dd><dt>Skill set:</dt><dd>Illus­tra­tor, InDesign</dd><dt>Fin­ished:</dt><dd>Novem­ber&nbsp;2011</dd></dl></section>
