@@ -8,8 +8,5 @@ section: contact
 date: 2018-01-01
 permalink: /contact/index.html
 ---
-The contact form on this page uses
-[Netlify Forms](https://www.netlify.com/docs/form-handling/) to process
-submissions, and saves them in your Netlify account where you can optionally
-set up notifications. Each submission is passed through a spam filter and if
-flagged, will display a CAPTCHA challenge to the user.
+
+I’m currently accepting work opportunities, so feel free to reach out with your project. Simply fill out the form below and I’ll hit you back within 36 hours. Pinky promise.
