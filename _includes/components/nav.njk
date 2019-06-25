@@ -1,6 +1,18 @@
 <nav class="main-navigation">
   <a href="{{ '/' | url }}" class="logo">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"><path d="M87.445 6.802l12.555 19.877-38.032 66.52h-23.935l-38.032-66.52 12.585-19.877h74.86zm-63.495 19.877h52.1l-26.051 45.58-26.049-45.58z" fill="#0cebc3" /><path d="M76.05 26.677h23.95l-38.064 66.52h-23.935l38.05-66.52z" fill="url(#a)" /><path d="M100 26.677l-12.554-19.876h-74.86l11.363 19.876h76.05z" fill="url(#b)" /><path d="M12.655 6.803l-12.655 19.863 37.899 66.467 12.035-20.915-37.278-65.417v.001z" fill="url(#c)" /><defs><linearGradient id="a" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-40.507 70.366 -4684.5 -2696.69 81.507 0)"><stop offset="0" stop-color="#7d10f6" /><stop offset="1" stop-opacity="0" /></linearGradient><linearGradient id="b" xlink:href="#a" gradientTransform="matrix(75.398 1.161 -16.376 1063.76 0 5.486)" /><linearGradient id="c" xlink:href="#a" gradientTransform="matrix(-36.03 -67.819 67.819 -36.03 41 75.918)" /></defs></svg>
+    <svg viewBox="0 0 991 858" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+      <path d="M229.376 199.013l380.251 658.615h-229.517l-379.686-658.615h228.952z" fill="url(#a)" />
+      <path d="M495.152 658.86l380.251-658.615 114.759 198.768-380.535 658.125-114.475-198.278z" fill="url(#b)" />
+      <path d="M760.503 198.768h-760.503l114.759-198.768 760.22.49-114.476 198.278z" fill="url(#c)" />
+      <defs>
+        <linearGradient id="a" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(380.341 658.615 -658.615 380.341 229.286 199.013)">
+          <stop offset="0" stop-color="#6450C9" />
+          <stop offset=".4" stop-color="#1DD0C9" />
+          <stop offset="1" stop-color="#0CEBC3" />
+        </linearGradient>
+        <linearGradient id="b" xlink:href="#a" gradientTransform="matrix(380.207 -658.692 658.692 380.207 495.196 658.937)" />
+        <linearGradient id="c" xlink:href="#a" gradientTransform="matrix(-760.548 .078 -.078 -760.548 760.548 198.69)" />	</defs>
+    </svg>
   </a>
   {%- for nav in collections.nav | sort(attribute="date") -%}
     <a class="underline" href="{{ nav.url | url }}" {% if nav.url == page.url %} data-current="current item" tabindex="-1" {% endif %}>{{ nav.data.navtitle }}</a>

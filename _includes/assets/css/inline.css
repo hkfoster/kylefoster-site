@@ -46,20 +46,6 @@ body {
   }
 } */
 
-@keyframes blast-off {
-  from { transform: rotate(0deg); } 
-  to   { transform: rotate(360deg); }
-}
-
-.rocket {
-  transform-origin: center;
-}
-
-.blast-off .rocket,
-.blast-off .rocket {
-  animation: blast-off 1.25s;
-}
-
 @keyframes jiggle {
   25% {
     transform: scale(0.925, 1.075);
@@ -124,9 +110,17 @@ body {
 }
 
 .gradient {
-  background-image: linear-gradient(to right, var(--mint), var(--purple), var(--pink));
+  background-image: linear-gradient(to right, var(--mint), var(--purple), var(--pink), var(--purple), var(--mint), var(--purple), var(--pink), var(--purple));
+  background-size: 400% 400%;
+  animation: gradient-transition 60s ease infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+@keyframes gradient-transition {
+	0%   { background-position: 0% 50%;   }
+	50%  { background-position: 100% 50%; }
+	100% { background-position: 0% 50%;   }
 }
 
 
@@ -147,7 +141,6 @@ body {
   display: inline-flex;
 }
 
-.blast-off,
 .jiggle[href]:hover,
 .jiggle[href]:focus,
 .jiggle[href]:active {
@@ -155,10 +148,17 @@ body {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: var(--logo-size);
-  height: auto;
+  height: var(--logo-size);
+  padding: 10px 5px 5px 5px;
+  border-radius: 50%;
+  margin: -5px;
+  overflow: hidden;
   transform: rotate(0deg);
-  transform-origin: 52% 44%;
+  transform-origin: 50%;
   transition: .5s;
 }
 
