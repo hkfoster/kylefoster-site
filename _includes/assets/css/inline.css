@@ -160,8 +160,8 @@ textarea {
   width: var(--logo-size);
   height: var(--logo-size);
   padding: 10px 5px 5px 5px;
+  margin: -10px 0 -5px -5px;
   border-radius: 50%;
-  margin: -5px;
   overflow: hidden;
   transform: rotate(0deg);
   transform-origin: 50%;
@@ -181,17 +181,59 @@ textarea {
 .supersized-heading {
   margin: 0 auto;
   max-width: 78rem;
+  font-size: 36px;
 }
 
 @media screen and (min-width: 600px) {
   .supersized-heading {
-    font-size: calc(32px + 32 * ((100vw - 600px) / 600));
+    font-size: calc(36px + 36 * ((100vw - 600px) / 600));
   }
 }
+
 @media screen and (min-width: 1200px) {
   .supersized-heading {
     font-size: 64px;
   }
+}
+
+.quick-contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  right: var(--viewport-padding);
+}
+
+.contact-info {
+  position: relative;
+  top: 20px;
+  opacity: 0;
+  color: var(--white);
+  transition: 
+    .2s top, 
+    .2s opacity;
+}
+
+.contact-info:after {
+  content: '\\';
+  display: block;
+  opacity: inherit;
+  color: var(--mint);
+}
+
+.quick-contact:hover .contact-info {
+  top: 0;
+  opacity: 1;
+}
+
+.brow {
+  position: relative;
+  width: 100px;
+  height: auto;
+  vertical-align: bottom;
 }
 
 h1,
@@ -256,8 +298,8 @@ body > footer {
 
 body > footer {
   font-size: .75rem;
-  text-align: right;
-  padding: 0 calc(var(--viewport-padding) * 2) var(--viewport-padding) 0;
+  text-align: center;
+  padding: 0 calc(var(--viewport-padding) * 2) var(--viewport-padding) var(--viewport-padding);
 }
 
 main {
@@ -411,6 +453,20 @@ main {
 
 .sidebar-navigation a {
   padding: .75rem;
+}
+
+@media (max-width: 800px) {
+  .sidebar-navigation {
+    display: none;
+  }
+
+  main {
+    padding: calc(var(--viewport-padding) * 6 + var(--logo-size)) 4rem;
+  }
+
+  body > footer {
+    text-align: left;
+  }
 }
 
 [data-current='about'] article,
