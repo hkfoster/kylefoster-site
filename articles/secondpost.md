@@ -1,6 +1,6 @@
 ---
 title: This is my second post
-summary: Why contemplating our mortality can be a powerful catalyst for change
+summary: Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.
 date: 2016-01-01
 tags:
   - post

@@ -1,33 +1,19 @@
 {% for article in articleslist | reverse %}
-  <article{% if article.url == url %} data-current="current item"{% endif %}>
-    <h2>
-      <a href="{{ article.url | url }}">
+  <article class="excerpt"{% if article.url == url %} data-current="current item"{% endif %}>
+    <a class="keep-reading" href="{{ article.url | url }}">
+      <h2>
         {% if article.data.title %}
           {{ article.data.title }}
         {% else %}
           Untitled
         {% endif %}
-      </a>
-    </h2>
-    {% if article.data.summary %}
-      <p>
-        {{ article.data.summary }}
-      </p>
-    {% endif %}
-    <p>
-      <time datetime="{{ article.date | machineDate }}">
-        <small>{{ article.date | readableDate }} by {{ metadata.author.name }}</small>
-      </time>
-    </p>
-    {% if article.data.tags %}
-      <p>
-        {% for tag in article.data.tags %}
-          {%- if tag != "article" -%}
-            {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-          <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
-          {%- endif -%}
-        {% endfor %}
-      </p>
-    {% endif %}
+      </h2>
+      {% if article.data.summary %}
+        <p>
+          {{ article.data.summary }}
+        </p>
+      {% endif %}
+      <time datetime="{{ article.date | machineDate }}">{{ article.date | readableDate }}</time>
+    </a>
   </article>
 {% endfor %}

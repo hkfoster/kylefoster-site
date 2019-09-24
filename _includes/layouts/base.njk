@@ -1,3 +1,11 @@
+---js
+{
+  currentDate: function() {
+    return (new Date().getFullYear());
+  }
+}
+---
+
 <!doctype html>
 <html {% if section %} data-current="{{ section }}" {% endif %} lang="en">
 
@@ -13,7 +21,20 @@
       {{ layoutContent | safe }}
     </main>
 
-    {% include "components/footer.njk" %}
+    <footer>
+      <a class="quick-contact" href="mailto:hello@kylefoster.design">
+        <img src="/static/img/brow.png" class="brow" alt="Kyle looking up at all this amazing content">
+      </a>
+      <span class="contact-info" aria-hidden>hello@kylefoster.design</span>
+      &copy;&nbsp;{{ currentDate() }}&nbsp;Kyle Foster. All wrongs reversed.
+      <script>
+        {% include "assets/js/prism.js" %}
+        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+        ga('create', 'UA-27758132-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+      <script async src='https://www.google-analytics.com/analytics.js'></script>
+    </footer>
 
   </body>
 

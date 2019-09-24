@@ -138,3 +138,152 @@ loadFont( 'web-', '/styles/fonts.css' );
 //     }, 500 );
 //   });
 // };
+
+/**
+ * Mobile Menu 0.0.4
+ * Mobile navigation menu module
+ * @author Kyle Foster (@hkfoster)
+ * @license MIT (http://www.opensource.org/licenses/mit-license.php/)
+ **/
+
+// Public API function
+var mobileMenu = function (selector, settings) {
+
+  // Overridable defaults
+  var defaults = {
+      initWidth: '820px',
+      openClass: 'menu-open',
+      menuSelector: '.main-menu',
+      menuToggle: '.menu-toggle'
+    },
+
+    // Scoped variables
+    options = Object.assign({}, defaults, settings),
+    element = document.querySelector(selector),
+    widthQuery = window.matchMedia(`(max-width: ${options.initWidth})`),
+    docBody = document.body,
+    focusable,
+    firstFocusable,
+    lastFocusable;
+
+  // Attach listeners
+  if (element) {
+
+    // Call listener function explicitly at run time
+    queryHandler(widthQuery);
+
+    // Attach listener function to listen in on state changes
+    widthQuery.addListener(queryHandler);
+
+  }
+
+  function keyHandler(event) {
+    event = event || window.event;
+
+    if (!docBody.classList.contains(options.openClass)) return false;
+
+    var tabKey = 9,
+      escKey = 27;
+
+    // Key code conditionals
+    switch (event.keyCode) {
+
+      // Tab
+      case tabKey:
+        if (focusable.length === 1) {
+          event.preventDefault();
+          break;
+        }
+
+        // Go back if shift is fired, tab backward
+        if (event.shiftKey) {
+          if (document.activeElement === firstFocusable) {
+            event.preventDefault();
+            lastFocusable.focus();
+          }
+
+          // Otherwise tab forward
+        } else {
+          if (document.activeElement === lastFocusable) {
+            event.preventDefault();
+            firstFocusable.focus();
+          }
+        }
+        break;
+
+        // Esc
+      case escKey:
+        docBody.classList.remove(options.openClass);
+        allowFocus(options.menuSelector, false);
+        break;
+
+        // Default
+      default:
+        break;
+    }
+  }
+
+  // Click handler function
+  function clickHandler(event) {
+
+    // Combine element selector with anchor links
+    var toggleSelector = `${options.menuToggle}, .${options.openClass} ${selector} a[href^="#"]`;
+
+    // Only run on menu button
+    if (event.target.closest(toggleSelector)) {
+
+      // Toggle body class
+      docBody.classList.toggle(options.openClass);
+
+      // Set up modal focus trap
+      if (docBody.classList.contains(options.openClass)) {
+        allowFocus(options.menuSelector, true);
+        trapFocus();
+      } else {
+        allowFocus(options.menuSelector, false);
+      }
+    }
+  }
+
+  function allowFocus(selector, state) {
+    const container = document.querySelector(selector);
+    const focusable = container.querySelectorAll('button, [href], input, select, textarea');
+    focusable.forEach(el => el.setAttribute('tabindex', state ? '' : '-1'));
+    container.hidden = !state;
+  }
+
+  // Trap focus to currently open modal
+  function trapFocus() {
+    focusable = element.querySelectorAll('button, [href], input, select, textarea');
+    firstFocusable = focusable[0];
+    lastFocusable = focusable[focusable.length - 1];
+  }
+
+  // Media query handler function
+  function queryHandler(condition) {
+
+    // If media query matches
+    if (condition.matches) {
+
+      // Prevent focus on menu elements
+      allowFocus(options.menuSelector, false);
+
+      // Click function listener
+      document.addEventListener('click', clickHandler, false);
+      document.addEventListener('keydown', keyHandler, false);
+
+    } else {
+
+      // Allow focus on menu elements
+      allowFocus(options.menuSelector, true);
+
+      // Remove click listener
+      document.removeEventListener('click', clickHandler, false);
+      document.removeEventListener('keydown', keyHandler, false);
+
+    }
+  }
+
+};
+
+// mobileMenu('[role=banner]');

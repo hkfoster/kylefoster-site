@@ -39,15 +39,44 @@ code[class*="language-"] ::selection {
 }
 
 /* Code blocks */
-pre[class*="language-"] {
-  padding: 3rem;
-  margin-left: -3rem;
-  margin-right: -3rem;
-  margin-top: 3rem;
-  margin-bottom: 5rem;
+
+.code-toolbar {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 3rem -3rem;
+  border-radius: var(--radius);
+  box-shadow: 
+    0 1px 1px hsla(258, 83%, 15%, .05), 
+    0 6px 16px hsla(258, 83%, 15%, .1);
 }
 
+.toolbar {
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-size: .875rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  z-index: 1;
+  align-items: center;
+  border-top: 1px solid hsl(258, 82%, 93%);
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  color: var(--purple);
+  background: hsl(258, 82%, 93%);
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding-top: .4rem;
+  order: -1;
+}
+
+pre[class*="language-"] {
+  padding: 3rem;
+  margin: 0;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+/* 
 pre[class*="language-"]:before,
 pre[class*="language-"]:after {
   content: '';
@@ -69,7 +98,7 @@ pre[class*="language-"]:after {
   width: calc(100% - 4rem);
   left: 2rem;
   background: #463C8F;
-}
+} */
 
 /* Inline code */
 :not(pre)>code[class*="language-"] {
