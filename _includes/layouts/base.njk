@@ -22,10 +22,15 @@
     </main>
 
     <footer>
+      {% include "components/social-nav.njk" %}
+      
       <a class="quick-contact" href="mailto:hello@kylefoster.design">
-        <img src="/static/img/brow.png" class="brow" alt="Kyle looking up at all this amazing content">
+        <span class="contact-info" aria-hidden>hello@kylefoster.design</span>
+        <figure class="duotone">
+          <img class="duotone-avatar" src="/static/img/duotone.png" alt="Kyle looking up at all this amazing content">
+          <figcaption class="duotone-underlay"></figcaption>
+        </figure>
       </a>
-      <span class="contact-info" aria-hidden>hello@kylefoster.design</span>
       &copy;&nbsp;{{ currentDate() }}&nbsp;Kyle Foster. All wrongs reversed.
       <script>
         {% include "assets/js/prism.js" %}
