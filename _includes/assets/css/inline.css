@@ -9,17 +9,12 @@
   --normal-link: var(--mint);
   --active-link: var(--mint);
   --heading: hsl(258, 83%, 15%);
-  /* --heading: white; */
-  /* --heading: var(--purple); */
-  /* --text: white; */
-  /* --text: hsl(258, 25%, 45%); */
   --text: hsl(258, 35%, 35%);
-  /* --background: hsl(246, 37%, 20%); */
-  /* --background: hsl(30, 9%, 96%); */
   --background: white;
   --logo-size: 3rem;
   --viewport-padding: 1rem;
   --radius: 6px;
+  --transition: .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
 }
 
 ::selection {
@@ -82,7 +77,7 @@ textarea {
 /* Universal links */
 [href],
 [href]:visited {
-  transition: .25s;
+  transition: var(--transition);
   text-decoration: none;
   color: var(--purple);
   /* color: var(--mint); */
@@ -99,7 +94,7 @@ textarea {
 [href].underline,
 [href].underline:visited {
   position: relative;
-  transition: .25s;
+  transition: var(--transition);
 }
 
 [href].underline:after {
@@ -110,7 +105,7 @@ textarea {
   width: 100%;
   height: 1px;
   background: linear-gradient(to left, var(--pink), transparent);
-  transition: .2s;
+  transition: var(--transition);
   transform-origin: 0% 100%;
   transform: scaleX(0);
   opacity: .25;
@@ -475,9 +470,16 @@ main {
   position: fixed;
   bottom: 0;
   right: calc(var(--viewport-padding) - 90px);
+  transform: translate(0, 35px);
   display: flex;
   flex-direction: column;
-  transition: .5s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  transition: var(--transition);
+}
+
+[href].quick-contact:hover,
+[href].quick-contact:focus,
+[href].quick-contact:active {
+  transform: translate(0, 0);
 }
 
 .contact-info {
@@ -492,7 +494,7 @@ main {
   background: var(--purple);
   transform: rotate(-90deg) translate(-14px, 7px);
   transform-origin: left top;
-  transition: .25s background;
+  transition: var(--transition);
 }
 
 .contact-info:after {
@@ -511,7 +513,6 @@ main {
 .duotone {
   position: relative;
   width: var(--logo-size);
-  height: calc(var(--logo-size) - 5px);
   margin: 0;
   vertical-align: bottom;
 }
@@ -527,7 +528,7 @@ main {
   width: 100%;
   height: 100%;
   background: var(--purple);
-  transition: .25s background;
+  transition: var(--transition);
   z-index: -1;
 }
 
@@ -570,48 +571,55 @@ img {
   align-items: flex-start;
   justify-content: center;
   height: 100%;
+  width: 100%;
 }
 
-.keep-reading h2,
+.keep-reading div {
+  transform: scale(1);
+  transition: var(--transition);
+}
+
+/* .keep-reading h2 */
 .keep-reading time {
-  transition: .25s color;
   color: var(--heading);
 }
 
 .keep-reading p {
-  transition: .25s color;
   color: var(--text);
 }
 
-.keep-reading:hover > *,
-.keep-reading:focus > *,
-.keep-reading:active > * {
-  color: #2C4A57;
+.keep-reading:hover div,
+.keep-reading:focus div,
+.keep-reading:active div {
+  color: rgba(44, 74, 87, .25);
+  opacity: .15;
+  transform: scale(.8);
 }
 
 .keep-reading:after {
-  content: 'Keep reading';
+  content: 'Keep\00a0reading\00a0\00a0\2192';
   position: absolute;
   opacity: 0;
   line-height: 1;
   text-transform: uppercase;
   font-size: .8125rem;
-  padding: 1rem 1.375rem;
+  padding: 1rem 1.375rem .825rem;
   border-radius: 3rem;
   font-weight: 700;
   letter-spacing: .1em;
   text-indent: .1em;
   color: var(--white);
-  background: var(--purple);
+  background: var(--pink);
   font-weight: 700;
   transform: scale(.25);
-  transition: .25s opacity, .25s transform;
+  transition: var(--transition);
   transform-origin: center center;
   align-self: center;
 }
 
 .keep-reading:hover:after,
-.keep-reading:focus:after {
+.keep-reading:focus:after,
+.keep-reading:active:after {
   opacity: 1;
   transform: scale(1);
 }
@@ -657,7 +665,6 @@ img {
 /* Timestamps */
 [data-current='articles'] time {
   display: flex;
-  color: var(--white);
   text-transform: uppercase;
   font-size: .75rem;
   font-weight: 700;
