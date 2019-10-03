@@ -1,6 +1,5 @@
 ---
 title: Projects
-layout: layouts/projects.njk
 tags:
   - nav
 navtitle: Projects
