@@ -1,16 +1,20 @@
 :root {
   --white: #FDFDFE;
-  --silver: hsl(246, 90%, 75%);
+  --silver: hsl(246, 100%, 75%);
   --orange: #FF9C32;
   --pink: #FF3299;
   --hot-pink: var(--pink);
-  --purple: hsl(263, 90%, 50%);
+  /* --purple: hsl(263, 90%, 50%); */
+  --purple: hsl(255, 98%, 68%);
   --mint: #0CEBC3;
   --normal-link: var(--mint);
-  --active-link: var(--mint);
-  --heading: hsl(258, 83%, 15%);
-  --text: hsl(258, 35%, 35%);
-  --background: white;
+  --active-link: var(--pink);
+  /* --heading: hsl(258, 83%, 15%); */
+  --heading: white;
+  /* --text: hsl(258, 35%, 35%); */
+  --text: hsl(250, 45%, 75%);
+  /* --background: white; */
+  --background: rgb(15, 0, 50);
   --logo-size: 3rem;
   --viewport-padding: 1rem;
   --radius: 6px;
@@ -79,14 +83,14 @@ textarea {
 [href]:visited {
   transition: .5s var(--transition);
   text-decoration: none;
-  color: var(--purple);
+  color: var(--normal-link);
   /* color: var(--mint); */
 }
 
 [href]:hover,
 [href]:focus,
 [href]:active {
-  color: var(--pink);
+  color: var(--active-link);
   /* color: var(--mint); */
 }
 
@@ -94,6 +98,7 @@ textarea {
 [href].underline,
 [href].underline:visited {
   position: relative;
+  color: var(--silver);
 }
 
 [href].underline:after {
@@ -112,8 +117,10 @@ textarea {
 
 [href].underline:hover,
 [href].underline:focus,
-[href].underline:active {
-  /* color: var(--purple); */
+[href].underline:active,
+[href].underline[data-current*='current item'],
+[data-current='article'] [href].underline[href='/articles/'] {
+  color: var(--pink);
 }
 
 
@@ -451,6 +458,18 @@ main {
   padding: .75rem;
 }
 
+.social-nav a,
+.social-nav a:visited {
+  color: var(--silver);
+}
+
+.social-nav a:hover,
+.social-nav a:focus,
+.social-nav a:active {
+  color: var(--pink);
+}
+
+
 @media (max-width: 800px) {
   .social-nav {
     display: none;
@@ -516,27 +535,36 @@ main {
   vertical-align: bottom;
 }
 
-.duotone-avatar {
-  mix-blend-mode: screen;
+.duotone-purple {
+  opacity: 1;
+  transition: .5s var(--transition) opacity;
 }
 
-.duotone-underlay {
+.duotone-pink {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background: var(--purple);
-  transition: .5s var(--transition);
-  z-index: -1;
+  opacity: 0;
+  transition: .5s var(--transition) opacity;
+}
+
+.quick-contact:hover .duotone-purple,
+.quick-contact:focus .duotone-purple,
+.quick-contact:active .duotone-purple {
+  opacity: 0;
+}
+
+.quick-contact:hover .duotone-pink,
+.quick-contact:focus .duotone-pink,
+.quick-contact:active .duotone-pink {
+  opacity: 1;
 }
 
 .quick-contact:hover .contact-info,
 .quick-contact:focus .contact-info,
-.quick-contact:active .contact-info,
-.quick-contact:hover .duotone-underlay,
-.quick-contact:focus .duotone-underlay,
-.quick-contact:active .duotone-underlay {
+.quick-contact:active .contact-info {
   background: var(--pink);
 }
 
