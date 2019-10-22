@@ -54,7 +54,7 @@ body,
 input,
 select,
 textarea {
-  font: 400 1.5rem/1.4 'TT Commons', -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font: 400 1.5rem/1.4 'TTC', -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
 @keyframes jiggle {
@@ -227,7 +227,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Recoleta';
+  font-family: 'MP', Georgia, Times, 'Times New Roman', serif;
   line-height: 1.125;
   color: var(--heading);
   margin-bottom: 1rem;
