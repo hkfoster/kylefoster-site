@@ -2,17 +2,16 @@
  * GHColors theme by Avi Aryan (http://aviaryan.in)
  * Inspired by Github syntax coloring
  */
-code[class*="language-"],
-pre[class*="language-"] {
+
+code[class*='language-'], pre[class*='language-'] {
   color: #393A34;
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
   direction: ltr;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
-  font-size: .875em;
-  line-height: 1.2em;
+  line-height: 1.3em;
   -moz-tab-size: 2;
   -o-tab-size: 2;
   tab-size: 2;
@@ -24,17 +23,11 @@ pre[class*="language-"] {
   border-radius: .5rem;
 }
 
-pre[class*="language-"]::-moz-selection,
-pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection,
-code[class*="language-"] ::-moz-selection {
+pre[class*='language-']::-moz-selection, pre[class*='language-'] ::-moz-selection, code[class*='language-']::-moz-selection, code[class*='language-'] ::-moz-selection {
   background: #b3d4fc;
 }
 
-pre[class*="language-"]::selection,
-pre[class*="language-"] ::selection,
-code[class*="language-"]::selection,
-code[class*="language-"] ::selection {
+pre[class*='language-']::selection, pre[class*='language-'] ::selection, code[class*='language-']::selection, code[class*='language-'] ::selection {
   background: #b3d4fc;
 }
 
@@ -44,73 +37,64 @@ code[class*="language-"] ::selection {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin: 3rem -3rem;
+  margin: 2.5rem -2.5rem;
   border-radius: var(--radius);
-  box-shadow: 
-    0 1px 1px hsla(258, 83%, 15%, .05), 
-    0 6px 16px hsla(258, 83%, 15%, .1);
+  box-shadow: 0 6px 16px hsla(258, 83%, 15%, .1);
 }
 
 .toolbar {
-  height: 3rem;
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
-  font-size: .875rem;
+  font-size: .6875rem;
   font-weight: 700;
   letter-spacing: .05em;
   z-index: 1;
   align-items: center;
-  border-top: 1px solid hsl(258, 82%, 93%);
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: 1rem;
   color: var(--purple);
   background: hsl(258, 82%, 93%);
   border-radius: var(--radius) var(--radius) 0 0;
-  padding-top: .4rem;
   order: -1;
 }
 
-pre[class*="language-"] {
-  padding: 3rem;
+.toolbar-item:first-child {
+  padding-top: .5em;
+}
+
+.toolbar-item:last-child a {
+  cursor: pointer;
+  transition: .2s;
+  padding: 1.6em 1.5em 1.25em 2em;
+  border-radius: 30px 6px 0 30px;
+  display: flex;
+  line-height: 1;
+  background: var(--silver);
+  color: #fff;
+  position: relative;
+}
+
+.toolbar-item:last-child:focus a,
+.toolbar-item:last-child:hover a,
+.toolbar-item:last-child:active a {
+  background: var(--purple);
+}
+
+pre[class*='language-'] {
+  padding: 2.5rem;
   margin: 0;
   border-radius: 0 0 var(--radius) var(--radius);
 }
-/* 
-pre[class*="language-"]:before,
-pre[class*="language-"]:after {
-  content: '';
-  position: absolute;
-  border-radius: 0 0 .5rem .5rem;
-  display: flex;
-  height: 1rem;
-}
-
-pre[class*="language-"]:before {
-  top: 100%;
-  width: calc(100% - 2rem);
-  left: 1rem;
-  background: #5E50C4;
-}
-
-pre[class*="language-"]:after {
-  top: calc(100% + 1rem);
-  width: calc(100% - 4rem);
-  left: 2rem;
-  background: #463C8F;
-} */
 
 /* Inline code */
-:not(pre)>code[class*="language-"] {
+
+:not(pre)>code[class*='language-'] {
   padding: .2em;
   padding-top: 1px;
   padding-bottom: 1px;
 }
 
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
+.token.comment, .token.prolog, .token.doctype, .token.cdata {
   color: #999988;
   font-style: italic;
 }
@@ -119,53 +103,29 @@ pre[class*="language-"]:after {
   opacity: .7;
 }
 
-.token.string,
-.token.attr-value {
+.token.string, .token.attr-value {
   color: #e3116c;
 }
 
-.token.punctuation,
-.token.operator {
+.token.punctuation, .token.operator {
   color: #393A34;
   /* no highlight */
 }
 
-.token.entity,
-.token.url,
-.token.symbol,
-.token.number,
-.token.boolean,
-.token.variable,
-.token.constant,
-.token.property,
-.token.regex,
-.token.inserted {
+.token.entity, .token.url, .token.symbol, .token.number, .token.boolean, .token.variable, .token.constant, .token.property, .token.regex, .token.inserted {
   color: #36acaa;
 }
 
-.token.atrule,
-.token.keyword,
-.token.attr-name,
-.language-autohotkey .token.selector {
+.token.atrule, .token.keyword, .token.attr-name, .language-autohotkey .token.selector {
   color: #00a4db;
 }
 
-.token.function,
-.token.deleted,
-.language-autohotkey .token.tag {
+.token.function, .token.deleted, .language-autohotkey .token.tag {
   color: #9a050f;
 }
 
-.token.tag,
-.token.selector,
-.language-autohotkey .token.keyword {
+.token.tag, .token.selector, .language-autohotkey .token.keyword {
   color: #00009f;
-}
-
-.token.important,
-.token.function,
-.token.bold {
-  font-weight: bold;
 }
 
 .token.italic {
