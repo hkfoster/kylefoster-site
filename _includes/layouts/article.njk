@@ -7,6 +7,11 @@ section: article
   <h1>{{ title }}</h1>
   {{ layoutContent | safe }}
   <hr class="squiggle">
+  <div id="commento"></div>
+  <script 
+    data-no-fonts="true"
+    src="https://cdn.commento.io/js/commento.js">
+  </script>
   <footer>
     {% if tags %}
       <footer>
@@ -24,9 +29,9 @@ section: article
           {%- endif -%}
         {% endfor %}
       {% endif %}
-      <small>Originally published on
-        <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time>
-      </small>
+      <span>Published on
+        <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time>{{ update + "&bull; Updated on " + update if update }}
+      </span>
     </footer>
   </article>
 {# 
