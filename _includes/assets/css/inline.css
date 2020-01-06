@@ -309,7 +309,7 @@ body > footer {
   padding: calc(var(--viewport-padding) * 1.5) 70px calc(var(--viewport-padding) * 1.5) 140px;
   z-index: 1;
   border-radius: 40px 0 0 40px;
-  background: #ecebfd;
+  background: hsla(242, 91%, 95%, .75);
   transition: .5s var(--transition);
   transform: translate3d(100%, 0, 0);
 }
