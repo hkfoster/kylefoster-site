@@ -42,11 +42,12 @@
   </svg>
 </a>
 
+<button aria-label="Toggle menu" class="menu-button" onclick="document.body.classList.toggle('menu-open')">
+  <span></span>
+</button>
+
 <nav class="menu-nav">
-  <button aria-label="Toggle menu" class="menu-button" onclick="document.body.classList.toggle('menu-open')">
-    <span></span>
-  </button>
   {%- for nav in collections.nav | sort(attribute="date") -%}
-    <a class="underline" href="{{ nav.url | url }}" {% if nav.url == page.url %} data-current="current item" tabindex="-1" {% endif %}>{{ nav.data.navtitle }}</a>
+    <a href="{{ nav.url | url }}" {% if nav.url == page.url %} data-current="current item" tabindex="-1" {% endif %}>{{ nav.data.navtitle }}</a>
   {%- endfor -%}
 </nav>

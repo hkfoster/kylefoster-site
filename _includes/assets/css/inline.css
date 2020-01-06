@@ -57,20 +57,6 @@ textarea {
   font: 400 22px/1.5 'TT Commons', -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
-@keyframes jiggle {
-  25% {
-    transform: scale(0.925, 1.075);
-  }
-
-  50% {
-    transform: scale(1.075, 0.925);
-  }
-
-  75% {
-    transform: scale(0.95, 1.05);
-  }
-}
-
 /* Move dat Netlify button outta the way */
 [href*='https://app.netlify.com'] {
   position: fixed;
@@ -163,14 +149,9 @@ hr.squiggle {
   animation: squiggle 2s linear infinite;
 }
 
-@keyframes squiggle {
-  from { background-position:    0 0; }
-  to   { background-position: 25px 0; }
-}
-
 /* Currently active link item */
 [href][data-current='current item'],
-[data-current='article'] .underline[href='/articles/'] {
+[data-current='article'] [href='/articles/'] {
   color: var(--secondary-color);
 }
 
@@ -185,12 +166,6 @@ hr.squiggle {
   animation: jiggle 0.6s linear alternate;
 }
 
-.subtle-jiggle[href]:hover,
-.subtle-jiggle[href]:focus,
-.subtle-jiggle[href]:active {
-  animation: subtle-jiggle 0.6s linear alternate;
-}
-
 .chevron:after {
   content: '';
   width: .5em;
@@ -200,20 +175,6 @@ hr.squiggle {
   border-width: 0 2px 2px 0;
   transform: rotate(-45deg) translate(.65em, .5em);
   margin-right: .5em;
-}
-
-@keyframes subtle-jiggle {
-  25% {
-    transform: scale(0.975, 1.025);
-  }
-
-  50% {
-    transform: scale(1.025, 0.975);
-  }
-
-  75% {
-    transform: scale(0.95, 1.05);
-  }
 }
 
 h1,
@@ -312,7 +273,7 @@ body > footer {
 .logo {
   position: fixed;
   left: calc(var(--sidebar) / 2 - var(--logo) / 2);
-  top: var(--viewport-padding);
+  top: calc(var(--viewport-padding) - 3px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -339,14 +300,41 @@ body > footer {
 }
 
 .menu-nav {
-  position: fixed;
-  right: calc(var(--sidebar) / 2 - 20px);
-  top: var(--viewport-padding);
-  height: 100%;
-  transition: .5s var(--transition);
   display: flex;
   justify-content: center;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: calc(100% + 70px);
+  padding: calc(var(--viewport-padding) * 1.5) 70px calc(var(--viewport-padding) * 1.5) 140px;
   z-index: 1;
+  border-radius: 40px 0 0 40px;
+  background: #ecebfd;
+  transition: .5s var(--transition);
+  transform: translate3d(100%, 0, 0);
+}
+
+.menu-open .menu-nav {
+  transform: translate3d(0, 0, 0);
+}
+
+.menu-nav > [href] {
+  line-height: 1;
+  font-size: 18px;
+  padding: 1px 16px 0 16px;
+  position: relative;
+}
+
+.menu-nav>[href]:not(:last-child):after {
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: calc(50% - 2px);
+  width: 4px;
+  height: 4px;
+  display: block;
+  background: hsl(256, 95%, 87.5%);
+  border-radius: 50%;
 }
 
 .menu-button {
@@ -355,18 +343,31 @@ body > footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
+  position: fixed;
+  top: var(--viewport-padding);
+  right: calc(var(--sidebar)/ 2 - 20px);
   width: 40px;
-  height: 30px;
+  height: 32px;
   transform: scale(.5);
-  transition: .2s transform;
+  transition: .2s color;
+  color: var(--primary-color);
+  z-index: 2;
+}
+
+.menu-button:hover {
+  animation: menu-jiggle 0.6s linear alternate;
+}
+
+.menu-button:hover,
+.menu-button:focus {
+  color: var(--secondary-color);
 }
 
 .menu-button:before,
 .menu-button span,
 .menu-button:after {
   height: 6px;
-  background: var(--primary-color);
+  background: currentColor;
   border-radius: 16px;
 }
 
@@ -376,44 +377,32 @@ body > footer {
   transition: .2s background;
 }
 
-.menu-button:hover:before,
-.menu-button:focus:before {
-  background: var(--secondary-color);
-}
-
 .menu-button span {
   width: 80%;
-  transform: translateX(0);
+  transform: translate3d(25%, 0, 0);
   transition: 
     .2s background,
     .2s .2s transform;
 }
 
-.menu-button:hover span,
-.menu-button:focus span {
-  background: var(--secondary-color);
-  transform: translateX(25%);
-}
-
 .menu-button:after {
   content: '';
   width: 60%;
-  transform: translateX(0);
+  transform: translate3d(65%, 0, 0);
   transition: 
     .2s background,
     .2s .4s transform;
 }
 
-.menu-button:hover:after,
-.menu-button:focus:after {
-  background: var(--secondary-color);
-  transform: translateX(65%);
+.menu-open .menu-button span,
+.menu-open .menu-button:after {
+  transform: translate3d(0, 0, 0);
 }
 
 main {
   transition: .5s var(--transition);
 }
-
+/* 
 body:not(.menu-open) .menu-nav a {
   border: 0 !important;
   clip: rect(0 0 0 0) !important;
@@ -424,15 +413,7 @@ body:not(.menu-open) .menu-nav a {
   position: absolute !important;
   width: 1px !important;
   white-space: nowrap !important;
-}
-
-.menu-open main {
-  transform: translate3d(-200px, 0, 0);
-}
-
-.menu-open .menu-nav {
-  width: 200px;
-}
+} */
 
 .social-nav {
   position: fixed;
@@ -620,7 +601,7 @@ img {
   opacity: 0;
   line-height: 1;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 14px;
   padding: 16px 22px 13px;
   border-radius: 48px;
   font-weight: 700;
@@ -827,6 +808,23 @@ svg {
 p code {
   font-size: .8em;
   padding: .2em .4em;
-  background: hsl(251, 53%, 94%);
   border-radius: 6px;
+  background: hsl(244, 90%, 96%);
+}
+
+@keyframes squiggle {
+  0%   { background-position:    0 0; }
+  100% { background-position: 25px 0; }
+}
+
+@keyframes menu-jiggle {
+  25% { transform: scale(0.475, 0.525); }
+  50% { transform: scale(0.525, 0.475); }
+  75% { transform: scale(0.45, 0.505);  }
+}
+
+@keyframes jiggle {
+  25% { transform: scale(0.925, 1.075); }
+  50% { transform: scale(1.075, 0.925); }
+  75% { transform: scale(0.95,  1.05);  }
 }
