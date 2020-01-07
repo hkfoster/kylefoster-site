@@ -7,11 +7,6 @@ section: article
   <h1>{{ title }}</h1>
   {{ layoutContent | safe }}
   <hr class="squiggle">
-  <div id="commento"></div>
-  <script 
-    data-no-fonts="true"
-    src="https://cdn.commento.io/js/commento.js">
-  </script>
   <footer>
     {% if tags %}
       <footer>
@@ -32,9 +27,7 @@ section: article
       <span>Published on
         <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time>{{ update + "&bull; Updated on " + update if update }}
       </span>
+      <div id="commento"></div>
+      <script data-no-fonts="true" src="https://cdn.commento.io/js/commento.js"></script>
     </footer>
   </article>
-{# 
-  <nav>
-    <a href="{{ '/articles/' | url }}">&larr; Articles index</a>
-  </nav> #}
