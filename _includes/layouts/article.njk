@@ -9,25 +9,24 @@ section: article
   <hr class="squiggle">
   <footer>
     {% if tags %}
-      <footer>
-        {% for tag in tags %}
-          {%- if tag != "article" -%}
-            {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-            <a href="{{ tagUrl | url }}" rel="tag">
-              <svg role="img" viewbox="0 0 29 47" fill="currentColor">
-                <g buffered-rendering="static">
-                  <path d="M28.5 0H0v46.5l14.25-11.25L28.5 46.5V0z"/>
-                </g>
-              </svg>
-              {{ tag }}
-            </a>
-          {%- endif -%}
-        {% endfor %}
-      {% endif %}
-      <span>Published on
-        <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time>{{ update + "&bull; Updated on " + update if update }}
-      </span>
-      <div id="commento"></div>
-      <script data-no-fonts="true" src="https://cdn.commento.io/js/commento.js"></script>
-    </footer>
-  </article>
+      {% for tag in tags %}
+        {%- if tag != "article" -%}
+          {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+          <a href="{{ tagUrl | url }}" rel="tag">
+            <svg role="img" viewbox="0 0 29 47" fill="currentColor">
+              <g buffered-rendering="static">
+                <path d="M28.5 0H0v46.5l14.25-11.25L28.5 46.5V0z"/>
+              </g>
+            </svg>
+            {{ tag }}
+          </a>
+        {%- endif -%}
+      {% endfor %}
+    {% endif %}
+    <span>Published on
+      <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time>{{ update + "&bull; Updated on " + update if update }}
+    </span>
+    <div id="commento"></div>
+    <script data-no-fonts="true" src="https://cdn.commento.io/js/commento.js"></script>
+  </footer>
+</article>

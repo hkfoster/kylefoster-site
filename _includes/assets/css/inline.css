@@ -19,6 +19,7 @@
 
   --primary-color: hsl(256, 95%, 63%);
   --secondary-color: hsl(330, 100%, 60%);
+  --outline-color: hsl(256, 100%, 87%);
 }
 
 ::selection {
@@ -320,12 +321,13 @@ body > footer {
 
 .menu-nav > [href] {
   line-height: 1;
-  font-size: 18px;
+  font-size: 17px;
+  font-weight: 700;
   padding: 1px 16px 0 16px;
   position: relative;
 }
 
-.menu-nav>[href]:not(:last-child):after {
+.menu-nav > [href]:not(:last-child):after {
   content: '';
   position: absolute;
   right: -2px;
@@ -584,7 +586,7 @@ img {
 
 .keep-reading p {
   color: var(--text);
-  margin-bottom: 24px;
+  margin-bottom: 21px;
 }
 
 .keep-reading:hover div,
@@ -596,20 +598,16 @@ img {
 }
 
 .keep-reading:after {
-  content: 'Keep\00a0reading\00a0\00a0\2192';
+  content: 'Keep\00a0reading\2026';
   position: absolute;
   opacity: 0;
   line-height: 1;
-  text-transform: uppercase;
-  font-size: 14px;
-  padding: 16px 22px 13px;
+  font-size: 17px;
+  padding: 15px 22px 13px;
   border-radius: 48px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-indent: .1em;
   color: white;
-  background: var(--secondary-color);
   font-weight: 700;
+  background: var(--secondary-color);
   transform: translate3d(-50%, -50%, 0) scale(.25);
   transition: .6s var(--transition);
   transform-origin: center center;
@@ -697,36 +695,35 @@ article footer span {
 }
 
 /* Tag links */
-[href][rel='tag'],
+/* [href][rel='tag'],
 [href][rel='tag']:visited {
   color: white;
-}
+} */
 
-[href][rel='tag']:hover,
+/* [href][rel='tag']:hover,
 [href][rel='tag']:focus,
 [href][rel='tag']:active {
   background: var(--secondary-color);
-}
+} */
 
 [href][rel='tag'] {
-  text-transform: uppercase;
+  font-size: 16px;
   font-weight: 700;
-  font-size: 12px;
-  padding: 1.4em 1.8em 1em 1.8em;
+  padding: 7px 18px 5px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 64px;
+  border-radius: 30px;
   margin-right: 8px;
-  background: var(--primary-color);
+  border: 1px solid var(--outline-color);
 }
 
 a[rel='tag'] svg {
   height: 16px;
   width: auto;
-  margin-top: -.5em;
-  margin-right: 1em;
-  opacity: .4;
+  margin-top: -1px;
+  margin-right: 10px;
+  fill: var(--outline-color);
 }
 
 a[rel='tag']:last-child {
@@ -785,7 +782,7 @@ svg {
   display: flex;
   flex-direction: column;
   margin: 40px -40px;
-  border: 1px solid hsl(246, 100%, 90%);
+  border: 1px solid var(--outline-color);
   padding: 20px;
   border-radius: 12px;
 }
@@ -806,10 +803,14 @@ svg {
 }
 
 p code {
-  font-size: .8em;
-  padding: .2em .4em;
+  font-size: .75em;
+  /* font-weight: 700; */
+  /* background: hsl(11, 100%, 95%); */
+  background: hsla(12, 100%, 90%, .85);
+  /* color: hsl(12, 95%, 45%); */
+  padding: 0 .4em .1em;
   border-radius: 6px;
-  background: hsl(244, 90%, 96%);
+  font-family: 'Space Mono', monospace;
 }
 
 @keyframes squiggle {
