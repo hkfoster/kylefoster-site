@@ -798,9 +798,9 @@ svg {
 .logo-cloud, 
 .article-tags {
   display: grid;
-  margin: 68px -40px;
+  margin: 100px -40px;
   padding: 30px 40px;
-  border-radius: 12px;
+  border-radius: 16px;
   text-align: center;
   color: hsl(253, 20%, 65%);
   border: 2px solid hsl(253, 20%, 95%);
