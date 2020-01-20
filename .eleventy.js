@@ -2,6 +2,7 @@ const { DateTime } = require("luxon");
 const CleanCSS = require("clean-css");
 const UglifyJS = require("uglify-es");
 const htmlmin = require("html-minifier");
+const slugify = require("slugify");
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addLayoutAlias("article", "layouts/article.njk");
@@ -9,6 +10,16 @@ module.exports = function(eleventyConfig) {
   // Date formatting (human readable)
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj).toFormat("LLLL dd, yyyy");
+  });
+
+  // Safe slugs
+  eleventyConfig.addFilter("slug", (input) => {
+    const options = {
+      replacement: "-",
+      remove: /[&,+()$~%.'":*?<>{}]/g,
+      lower: true
+    };
+    return slugify(input, options);
   });
 
   // Date formatting (machine readable)

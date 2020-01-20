@@ -719,15 +719,12 @@ img {
 
 /* Tag links */
 [href][rel='tag'] {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
-  padding: 7px 18px 5px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  margin-right: 8px;
-  background:transparent;
+  margin-left: 15px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
 }
 
 [href][rel='tag']:hover {
@@ -736,49 +733,8 @@ img {
   animation: small-jiggle 0.6s linear alternate;
 }
 
-a[rel='tag'] svg {
-  height: 16px;
-  width: auto;
-  margin-top: -1px;
-  margin-right: 10px;
-  /* fill:; */
-}
-
 a[rel='tag']:last-child {
   margin-right: 0;
-}
-
-/* Contact Form */
-form {
-  display: grid;
-  padding: 2em 0;
-}
-
-input,
-textarea,
-button {
-  width: 100%;
-  padding: 1em;
-  margin-bottom: 1em;
-  font-size: inherit;
-}
-
-input,
-textarea {
-  border: 0;
-  padding: .5em .75em;
-  border-radius: var(--radius);
-}
-
-textarea {
-  height: 200px;
-}
-
-button {
-  border: 1px solid var(--blue);
-  background-color: var(--blue);
-  color: white;
-  cursor: pointer;
 }
 
 [type=submit] {
@@ -789,14 +745,15 @@ button {
   border-radius: var(--radius);
 }
 
+/* Universal SVG */
 svg {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
 }
 
-.logo-cloud, 
-.article-tags {
+/* Wells */
+.well {
   display: grid;
   margin: 100px 0;
   padding: 30px 40px;
@@ -806,12 +763,7 @@ svg {
   border: 2px solid hsl(253, 20%, 95%);
 }
 
-.article-tags {
-  padding: 30px 40px 10px;
-}
-
-.logo-cloud strong,
-.article-tags strong {
+.well-title {
   display: inline-flex;
   margin-top: calc(-30px - 1.1em);
   margin-left: auto;
@@ -819,6 +771,7 @@ svg {
   margin-bottom: 20px;
   background: white; 
   padding: .4em 1em;
+  font-family: 'TT Commons', -apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   letter-spacing: .125em;
   text-indent: .0625em;
@@ -826,14 +779,12 @@ svg {
   font-size: 15px;
 }
 
-.logo-cloud ul,
-.article-tags ul,
-.logo-cloud li, 
-.article-tags li {
+.well-list {
   margin: 0;
 }
 
-.logo-cloud ul {
+/* Previous engagements */
+.previous-engagements .well-list {
   display: grid; 
   grid-template-columns: repeat(auto-fit,  minmax(180px,  1fr)); 
   grid-gap: 40px; 
@@ -843,7 +794,12 @@ svg {
   padding: 0; 
 }
 
-.article-tags ul {
+/* Article tags */
+.article-tags {
+  padding: 30px 40px 10px;
+}
+
+.article-tags .well-list {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
@@ -851,7 +807,7 @@ svg {
   padding: 0;
 }
 
-.article-tags li {
+.article-tags .well-item {
   margin: 0 10px 20px 10px;
 }
 

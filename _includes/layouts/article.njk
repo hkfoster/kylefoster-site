@@ -12,15 +12,15 @@ section: article
   </header>
   {{ layoutContent | safe }}
   <footer>
-    <section class="article-tags">
+    <section class="well article-tags">
       {% if tags %}
-        <strong>Article categories</strong>
-        <ul>
+        <h2 class="well-title">Article tags</h2>
+        <ul class="well-list">
           {% for tag in tags %}
             {%- if tag != "article" -%}
-              {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-              <li>
-                <a href="{{ tagUrl | url }}" rel="tag">
+              {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+              <li class="well-item">
+                <a href="{{ tagUrl }}" rel="tag">
                   {{ tag }}
                 </a>
               </li>

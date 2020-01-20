@@ -3,9 +3,9 @@ title: On Letter-Spacing
 date: 2019-12-30
 summary: Ah, the trusty letter-spacing CSS property. It’s been around forever, and is an essential part of any front-end developer’s toolbox. I typically use it on fully-capitalized text or unruly webfonts…
 tags:
-  - css
-  - typography
-  - design
+  - CSS
+  - Typography
+  - Design
 ---
 
 Ah, the trusty `letter-spacing` CSS property. It’s been around forever, and is an essential part of any front-end developer’s toolbox. I typically use it on fully-capitalized text [insert example], or unruly webfonts, like this header text using [insert font]. But, as with most CSS properties, this one has a few quirks we need to consider during implementation.
