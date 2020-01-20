@@ -808,6 +808,7 @@ svg {
 
 .article-tags {
   padding: 30px 40px 10px;
+  margin: 100px 0;
 }
 
 .logo-cloud strong,
@@ -889,4 +890,8 @@ p code {
   25% { transform: scale(0.925, 1.075); }
   50% { transform: scale(1.075, 0.925); }
   75% { transform: scale(0.95,  1.05);  }
+}
+
+main + footer {
+  margin-top: 100px;
 }
