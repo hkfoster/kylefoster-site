@@ -8,7 +8,7 @@ date: 2017-01-01
 permalink: /projects/index.html
 ---
 
-## Projects
+# Projects
 
 I have lots of irons in the fire right now, especially at my day job working with <a href="https:/fly.io" target="_blank">Fly.io</a> and on my open source CSS library, <a href="https://cruxui.com" target="_blank">Crux UI</a>. As I find time, I’ll be populating this page with past highlights, current work, and plans for the future. Until then, feel free to reach out to me on social media or shoot me an <a href="mailto:hello@kylefoster.design">email</a>.
 

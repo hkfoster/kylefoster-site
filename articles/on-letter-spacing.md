@@ -1,7 +1,7 @@
 ---
 title: On Letter-Spacing
 date: 2019-12-30
-summary: Oh hi there! If you’re reading this, you probably know me personally or are a search bot. Welcome humans and robots alike. I’ve been tinkering around on the design of this site for a good while now…
+summary: Ah, the trusty letter-spacing CSS property. It’s been around forever, and is an essential part of any front-end developer’s toolbox. I typically use it on fully-capitalized text or unruly webfonts…
 tags:
   - css
   - typography
@@ -10,15 +10,15 @@ tags:
 
 Ah, the trusty `letter-spacing` CSS property. It’s been around forever, and is an essential part of any front-end developer’s toolbox. I typically use it on fully-capitalized text [insert example], or unruly webfonts, like this header text using [insert font]. But, as with most CSS properties, this one has a few quirks we need to consider during implementation.
 
-### Use relative units
+## Use relative units
 The most useful tip I can give when dealing with `letter-spacing` is to use `em` units, which will scale with your font. Using absolute units, such as `px` won’t scale if you need to rescale, which you inevitably will need to do.
 
 My go-to units lie within the `.005em to .02em` range, but it all depends on the typeface and design I’m working with.
 
-### Couple it with word-spacing
+## Couple it with word-spacing
 If you’re using a negative `letter-spacing` value, you might want to couple it with a positive `word-spacing` property. This will restore the typeface’s normal word spacing, which will allow it to breathe and maintain its legibility.
 
-### Don’t forget to trim your ends
+## Don’t forget to trim your ends
 
 As expected, declaring `letter-spacing` on an element will add horizontal space between its characters. Unexpectedly, that also applies to the *last* character as well. And that means you need to account for it in your designs.
 

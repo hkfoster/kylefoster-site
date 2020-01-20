@@ -81,7 +81,6 @@ const ready = ( fn ) => {
 ready(() => {
   const menuButton = document.querySelector('.menu-button')
 
-  
   menuButton.addEventListener('mousedown', toggleMenu)
 
   menuButton.addEventListener('keyup', event => {
@@ -89,7 +88,27 @@ ready(() => {
   })
 
   function toggleMenu(event) {
-    document.body.classList.toggle('menu-open')
+    const body = document.body
+
+    if (!document.body.classList.contains('menu-open')) {
+      const scrollPosition = document.documentElement.style.getPropertyValue('--scroll')
+      body.classList.add('menu-open')
+      body.style.position = 'fixed'
+      body.style.top = `-${scrollPosition}`
+    }
+
+    else {
+      const scrollPosition = body.style.top
+      body.style.position = ''
+      body.style.top = ''
+      window.scrollTo(0, parseInt(scrollPosition || '0') * -1)
+      body.classList.remove('menu-open')
+    }
+    
     if (event) event.preventDefault()
   }
+  
+  window.addEventListener('scroll', () => {
+    document.documentElement.style.setProperty('--scroll', `${window.scrollPosition}px`)
+  })
 })
