@@ -1,6 +1,13 @@
 {
   "title": "Kyle Foster",
-  "url": "https://kylefoster.design",
+  "url": "https://kylefoster.design/",
+  "description": "Tips, tricks, and perspective from a pixel pushing designer and developer.",
+  "feed": {
+    "subtitle": "Tips, tricks, and perspective from a pixel pushing designer and developer.",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://kylefoster.design/"
+  },
   "author": {
     "name": "Kyle Foster",
     "email": "hello@kylefoster.design",

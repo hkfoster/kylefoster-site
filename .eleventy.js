@@ -3,8 +3,13 @@ const CleanCSS = require("clean-css");
 const UglifyJS = require("uglify-es");
 const htmlmin = require("html-minifier");
 const slugify = require("slugify");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.addPlugin(pluginRss);
+  eleventyConfig.addPlugin(pluginSyntaxHighlight);
+
   eleventyConfig.addLayoutAlias("article", "layouts/article.njk");
 
   // Date formatting (human readable)
