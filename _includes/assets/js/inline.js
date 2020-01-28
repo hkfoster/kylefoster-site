@@ -141,7 +141,7 @@ var loadFont = function( fontName, fontFaceUrl, onlyLoadFontOnSecondPageload ){
 loadFont('web-', '/styles/fonts.css')
 
 /**
- * FullStop 0.0.2
+ * FullStop 0.0.3
  * Prevent CSS transitions from occurring during a window resize
  * @author Kyle Foster (@hkfoster)
  * @license MIT
@@ -157,8 +157,7 @@ var fullStop = function (settings) {
 
   // Scoped variables
   var options = Object.assign({}, defaults, settings),
-    docBody = document.body,
-    resizeTimer;
+      resizeTimer;
 
   // Resize handler function
   function resizeHandler() {
@@ -167,10 +166,8 @@ var fullStop = function (settings) {
     if (resizeTimer) timeout.clear(resizeTimer);
 
     // Add style element while resizing
-    const fullStop = document.querySelector('#full-stop')
-
-    if (!fullStop) {
-      docBody.insertAdjacentHTML(
+    if (!document.querySelector('#full-stop')) {
+      document.body.insertAdjacentHTML(
         'beforeend',
         `<style id="full-stop">
           *, 
@@ -187,7 +184,7 @@ var fullStop = function (settings) {
     resizeTimer = timeout.set(function () {
 
       // And style element upon completion
-      if (fullStop) docBody.removeChild(fullStop)
+      document.body.removeChild(document.querySelector('#full-stop'))
 
       // Delay firing function based on argument passed
     }, options.resizeDelay);

@@ -3,10 +3,10 @@ layout: layouts/base.njk
 section: article 
 ---
 
-<article>
+<article class="full-page-article">
   <header>
     <h1>{{slug}}{{ title }}</h1>
-    <span>Published on
+    <span class="publication-date">
       <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time>{{ update + "&bull; Updated on " + update if update }}
     </span>
   </header>

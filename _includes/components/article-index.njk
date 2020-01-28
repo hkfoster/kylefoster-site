@@ -1,0 +1,30 @@
+<figure class="background-cover">
+  {# <figcaption>
+    Hi there, I’m Kyle. For the past decade, I’ve helped companies design and develop products, build and market their brand, and most everything in between. Perhaps I can help you too.
+  </figcaption> #}
+  <img class="background-image" src="/static/img/kyle-grainy.png" srcset="/static/img/kyle-grainy@2x.png 2x" alt="">
+</figure>
+
+<section class="article-index">
+  {% for article in index | reverse %}
+    <a class="excerpt" href="{{ article.url | url }}" {% if article.url == url %} data-current="current item" {% endif %}>
+      <article class="article">
+        <h1 class="heading">
+          {% if article.data.title %}
+            {{ article.data.title }}
+          {% else %}
+            Untitled
+          {% endif %}
+        </h1>
+        {% if article.data.summary %}
+          <p class="summary">
+            {{ article.data.summary }}
+          </p>
+        {% endif %}
+        <span class="publication-date">
+          <time class="publication-date" datetime="{{ article.date | machineDate }}">{{ article.date | readableDate }}</time>
+        </span>
+      </article>
+    </a>
+  {% endfor %}
+</section>

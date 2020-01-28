@@ -15,8 +15,8 @@ layout: layouts/base.njk
 <div style="width: 100%; max-width: 800px; margin: 0 auto;">
 <h1 class="smallcaps">Articles tagged <em>{{ tag }}</em></h1>
 
-{% set articleslist = collections[ tag ] %}
-{% include "components/articleslist.njk" %}
+{% set index = collections[ tag ] %}
+{% include "components/article-index.njk" %}
 </div>
 {# <nav>
   <a href="{{ '/articles/' | url }}">← Articles index</a>

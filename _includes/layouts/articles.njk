@@ -6,5 +6,5 @@ permalink: /articles/index.html
 
 {{ layoutContent | safe }}
 
-{% set articleslist = collections.articles %}
-{% include "components/articleslist.njk" %}
+{% set index = collections.articles %}
+{% include "components/article-index.njk" %}
