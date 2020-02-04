@@ -6,6 +6,7 @@ navtitle: Projects
 section: projects
 date: 2017-01-01
 permalink: /projects/index.html
+layout: layouts/page.njk 
 ---
 
 # Projects
