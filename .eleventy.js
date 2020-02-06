@@ -60,11 +60,14 @@ module.exports = function(eleventyConfig) {
     return content;
   });
 
-  // only content in the `articles/` directory
+  // only live content in the `articles/` directory
+  const now = new Date();
+  const livePosts = p => p.date <= now && !p.data.draft;
+
   eleventyConfig.addCollection("articles", function(collection) {
     return collection.getAllSorted().filter(function(item) {
       return item.inputPath.match(/^\.\/articles\//) !== null;
-    });
+    }).filter(livePosts);
   });
 
   // Don't process folders with static assets e.g. images

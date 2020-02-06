@@ -1,5 +1,9 @@
 // Utils
 
+if (window.NodeList && !NodeList.prototype.forEach) {
+  NodeList.prototype.forEach = Array.prototype.forEach;
+}
+
 /**
  * Throttle 0.0.1
  * Event throttle function
@@ -208,6 +212,33 @@ const ready = ( fn ) => {
 }
 
 ready(() => {
+
+  const images = document.querySelectorAll('[data-src]')
+
+  function load(img) {
+    img.setAttribute('src', img.getAttribute('data-src'))
+    img.setAttribute('srcset', img.getAttribute('data-srcset'))
+    
+    // Pause for 1/10th second to render correctly
+    setTimeout(function() {
+      img.removeAttribute('data-src')
+      img.removeAttribute('data-srcset')
+    }, 100)
+  }
+  
+  images.forEach(function(img) {
+    if (img.complete) {
+      load(img)
+    } else {
+      img.addEventListener('load', function(event) {
+        load(event.target)
+      })
+      img.addEventListener('error', function() {
+        console.log('Image loading error')
+      })
+    }
+  })
+
   // This is pretty annoying
   document.documentElement.focus();
 

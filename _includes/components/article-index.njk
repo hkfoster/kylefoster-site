@@ -2,7 +2,20 @@
   {# <figcaption>
     Hi there, I’m Kyle. For the past decade, I’ve helped companies design and develop products, build and market their brand, and most everything in between. Perhaps I can help you too.
   </figcaption> #}
-  <img class="background-image" src="/static/img/kyle-grainy.png" srcset="/static/img/kyle-grainy@2x.png 2x" alt="">
+  <img 
+    class="background-image" 
+    data-src="/static/img/kyle-grainy.png" 
+    data-srcset="/static/img/kyle-grainy@2x.png 2x" 
+    alt="Kyle looking up and to the left with a smile on his face"
+  >
+  <noscript>
+    <img 
+      class="background-image" 
+      src="/static/img/kyle-grainy.png" 
+      srcset="/static/img/kyle-grainy@2x.png 2x" 
+      alt="Kyle looking up and to the left with a smile on his face"
+    >
+  </noscript>
 </figure>
 
 <section class="article-index">
@@ -11,7 +24,7 @@
       <article class="article">
         <h1 class="heading">
           {% if article.data.title %}
-            {{ article.data.title }}
+            {{ article.data.title | safe }}
           {% else %}
             Untitled
           {% endif %}

@@ -1,5 +1,5 @@
 ---
-title: Let’s get this sucker out the door
+title: Let’s Get This Sucker Out the door
 date: 2019-12-23
 summary: Oh hi there! If you’re reading this, you probably know me personally or are a search bot. Welcome humans and robots alike. I’ve been tinkering around on the design of this site for a good while now…
 tags:
