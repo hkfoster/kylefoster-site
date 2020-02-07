@@ -89,13 +89,6 @@ button {
   border: 0;
 }
 
-/* Move dat Netlify button outta the way */
-[href*='https://app.netlify.com'] {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-}
-
 /* Universal links */
 [href],
 [href]:visited {
