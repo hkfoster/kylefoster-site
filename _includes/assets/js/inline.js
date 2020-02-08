@@ -4,6 +4,24 @@ if (window.NodeList && !NodeList.prototype.forEach) {
   NodeList.prototype.forEach = Array.prototype.forEach;
 }
 
+if ('fonts' in document) {
+  const ttcBook = new FontFace('TT Commons', 'url(/static/fonts/tt-commons-book.woff2) format("woff2")', { weight: '400' });
+  const ttcBold = new FontFace('TT Commons', 'url(/static/fonts/tt-commons-bold.woff2) format("woff2")', { weight: '700' });
+  const tosBold = new FontFace('Ten Oldstyle', 'url(/static/fonts/ten-oldstyle-bold.woff2) format("woff2")', { weight: '700' });
+  const iawBook = new FontFace('iA Writer Duospace', 'url(/static/fonts/ia-writer-duospace-book.woff2) format("woff2")', { weight: '400' });
+
+  Promise.all([ 
+    ttcBook.load(), 
+    ttcBold.load(), 
+    tosBold.load(), 
+    iawBook.load() 
+  ]).then(function(fonts) {
+    fonts.forEach(function(font) {
+      document.fonts.add(font);
+    });
+  });
+}
+
 /**
  * Throttle 0.0.1
  * Event throttle function
@@ -163,7 +181,7 @@ ready(() => {
         console.log('Image loading error')
       })
     }
-  })
+  })  
 
   fullStop();
 
