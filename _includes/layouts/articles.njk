@@ -1,10 +1,44 @@
+---js
+{
+  currentDate: function() {
+    return (new Date().getFullYear());
+  }
+}
 ---
-layout: layouts/base.njk
+
+---
 section: articles
 permalink: /articles/index.html
 ---
 
-{{ layoutContent | safe }}
+<!doctype html>
+<html {% if section %} data-current="{{ section }}" {% endif %} lang="en">
 
-{% set index = collections.articles %}
-{% include "components/article-index.njk" %}
+  {% include "components/head.njk" %}
+
+  <body class="cover-page">
+
+    <header class="main-header" role="banner">
+      {% include "components/nav.njk" %}
+    </header>
+
+    <main>
+      {{ layoutContent | safe }}
+
+      {% set index = collections.articles %}
+      {% include "components/article-index.njk" %}
+    </main>
+
+    <footer>
+      &copy;&nbsp;{{ currentDate() }}&nbsp;Kyle Foster. All rights reserved.
+      <script>
+        {% include "assets/js/prism.js" %}
+        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+        ga('create', 'UA-27758132-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+      <script async src='https://www.google-analytics.com/analytics.js'></script>
+    </footer>
+
+  </body>
+</html>

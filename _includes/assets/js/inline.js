@@ -1,6 +1,5 @@
-// Utils
 /**
- * LoadFont 0.0.3
+ * LoadFont 0.0.4
  * A font loader that leverages LocalStorage
  * @author Adam Beres-Deak (@bdadam) & Kyle Foster (@hkfoster)
  * @source https://github.com/bdadam/OptimizedWebfontLoading
@@ -8,68 +7,66 @@
  **/
 
 // Catch-all LocalStorage availability check
-var localStorageAvailable = ( function( win ) {
-  var testKey = 'test', storage = win.localStorage
+var storageAvailable = ( function( win ) {
+  var testKey = 'test';
+  var storage = win.localStorage;
   try {
-    storage.setItem( testKey, '1' )
-    storage.removeItem( testKey )
-    return true
+    storage.setItem( testKey, '1' );
+    storage.removeItem( testKey );
+    return true;
   } catch ( error ) {
-    return false
+    return false;
   }
-})( window )
+})( window );
 
 // Public API function
-var loadFont = function( fontName, fontFaceUrl, onlyLoadFontOnSecondPageload ){
+var loadFont = function( fontName, fontFaceUrl, subsequentLoad ) {
 
   // Many unsupported browsers should stop here
-  if ( !localStorageAvailable ) return
+  if ( !storageAvailable ) return;
 
   // Set up LocalStorage
-  var loSto = {}
+  var storage = {};
 
   // Set up a proxy variable to help with LocalStorage
-  try { loSto = localStorage || {} }
+  try { storage = localStorage || {}; }
   catch( ex ) {}
 
-  var loStoPrefix    = 'x-font-' + fontName,
-      loStoUrlKey    = loStoPrefix + 'url',
-      loStoCssKey    = loStoPrefix + 'css',
-      storedFontUrl  = loSto[ loStoUrlKey ],
-      storedFontCss  = loSto[ loStoCssKey ],
-      storedUrlMatch = storedFontUrl === fontFaceUrl,
-      styleElement   = document.createElement( 'style' )
+  var storagePrefix  = 'font-' + fontName;
+  var storageUrlKey  = storagePrefix + '-url';
+  var storageCssKey  = storagePrefix + '-css';
+  var storedFontUrl  = storage[ storageUrlKey ];
+  var storedFontCss  = storage[ storageCssKey ];
+  var storedUrlMatch = storedFontUrl === fontFaceUrl;
+  var styleElement   = document.createElement( 'style' );
 
   // Make <style> element & apply base64 encoded font data
-  styleElement.rel  = 'stylesheet'
-  document.head.appendChild( styleElement )
+  styleElement.rel = 'stylesheet';
+  document.head.appendChild( styleElement );
 
   // CSS in LocalStorage & loaded from one of the current URLs
   if ( storedFontCss && storedUrlMatch ) {
+    styleElement.textContent = storedFontCss;
 
-    styleElement.textContent = storedFontCss
-
-  // Data not present or loaded from an obsolete URL
+  // Data not present or loaded from an obsolete URL, so fetch font
   } else {
-
-    // Fetch font data from the server
-    var request = new XMLHttpRequest()
-    request.open( 'GET', fontFaceUrl )
+    var request = new XMLHttpRequest();
+    request.open( 'GET', fontFaceUrl );
     request.onload = function() {
       if ( request.status >= 200 && request.status < 400 ) {
 
         // Update LocalStorage with fresh data & apply
-        loSto[ loStoUrlKey ] = fontFaceUrl
-        loSto[ loStoCssKey ] = request.responseText
-        if ( !onlyLoadFontOnSecondPageload ) styleElement.textContent = request.responseText
+        storage[ storageUrlKey ] = fontFaceUrl;
+        storage[ storageCssKey ] = request.responseText;
+        if ( !subsequentLoad ) styleElement.textContent = request.responseText;
       }
-    }
-    request.send()
+    };
+    request.send();
   }
-}
+};
 
 // Init
-loadFont('web-', '/static/css/fonts.css')
+loadFont('all', '/static/css/fonts.css');
 
 if (window.NodeList && !NodeList.prototype.forEach) {
   NodeList.prototype.forEach = Array.prototype.forEach;

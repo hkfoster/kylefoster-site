@@ -6,7 +6,7 @@ section: article
 <article class="full-page-article">
   <header>
     <h1>{{ title | safe }}</h1>
-    <span class="publication-date">
+    <span class="date">
       <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time>{{ update + "&bull; Updated on " + update if update }}
     </span>
   </header>
