@@ -1,26 +1,97 @@
 // Utils
+/**
+ * LoadFont 0.0.3
+ * A font loader that leverages LocalStorage
+ * @author Adam Beres-Deak (@bdadam) & Kyle Foster (@hkfoster)
+ * @source https://github.com/bdadam/OptimizedWebfontLoading
+ * @license MIT
+ **/
+
+// Catch-all LocalStorage availability check
+var localStorageAvailable = ( function( win ) {
+  var testKey = 'test', storage = win.localStorage
+  try {
+    storage.setItem( testKey, '1' )
+    storage.removeItem( testKey )
+    return true
+  } catch ( error ) {
+    return false
+  }
+})( window )
+
+// Public API function
+var loadFont = function( fontName, fontFaceUrl, onlyLoadFontOnSecondPageload ){
+
+  // Many unsupported browsers should stop here
+  if ( !localStorageAvailable ) return
+
+  // Set up LocalStorage
+  var loSto = {}
+
+  // Set up a proxy variable to help with LocalStorage
+  try { loSto = localStorage || {} }
+  catch( ex ) {}
+
+  var loStoPrefix    = 'x-font-' + fontName,
+      loStoUrlKey    = loStoPrefix + 'url',
+      loStoCssKey    = loStoPrefix + 'css',
+      storedFontUrl  = loSto[ loStoUrlKey ],
+      storedFontCss  = loSto[ loStoCssKey ],
+      storedUrlMatch = storedFontUrl === fontFaceUrl,
+      styleElement   = document.createElement( 'style' )
+
+  // Make <style> element & apply base64 encoded font data
+  styleElement.rel  = 'stylesheet'
+  document.head.appendChild( styleElement )
+
+  // CSS in LocalStorage & loaded from one of the current URLs
+  if ( storedFontCss && storedUrlMatch ) {
+
+    styleElement.textContent = storedFontCss
+
+  // Data not present or loaded from an obsolete URL
+  } else {
+
+    // Fetch font data from the server
+    var request = new XMLHttpRequest()
+    request.open( 'GET', fontFaceUrl )
+    request.onload = function() {
+      if ( request.status >= 200 && request.status < 400 ) {
+
+        // Update LocalStorage with fresh data & apply
+        loSto[ loStoUrlKey ] = fontFaceUrl
+        loSto[ loStoCssKey ] = request.responseText
+        if ( !onlyLoadFontOnSecondPageload ) styleElement.textContent = request.responseText
+      }
+    }
+    request.send()
+  }
+}
+
+// Init
+loadFont('web-', '/static/css/fonts.css')
 
 if (window.NodeList && !NodeList.prototype.forEach) {
   NodeList.prototype.forEach = Array.prototype.forEach;
 }
 
-if ('fonts' in document) {
-  const ttcBook = new FontFace('TT Commons', 'url(/static/fonts/tt-commons-book.woff2) format("woff2")', { weight: '400' });
-  const ttcBold = new FontFace('TT Commons', 'url(/static/fonts/tt-commons-bold.woff2) format("woff2")', { weight: '700' });
-  const tosBold = new FontFace('Ten Oldstyle', 'url(/static/fonts/ten-oldstyle-bold.woff2) format("woff2")', { weight: '700' });
-  const iawBook = new FontFace('iA Writer Duospace', 'url(/static/fonts/ia-writer-duospace-book.woff2) format("woff2")', { weight: '400' });
+// if ('fonts' in document) {
+//   const ttcBook = new FontFace('TT Commons', 'url(/static/fonts/tt-commons-book.woff2) format("woff2")', { weight: '400' });
+//   const ttcBold = new FontFace('TT Commons', 'url(/static/fonts/tt-commons-bold.woff2) format("woff2")', { weight: '700' });
+//   const tosBold = new FontFace('Ten Oldstyle', 'url(/static/fonts/ten-oldstyle-bold.woff2) format("woff2")', { weight: '700' });
+//   const iawBook = new FontFace('iA Writer Duospace', 'url(/static/fonts/ia-writer-duospace-book.woff2) format("woff2")', { weight: '400' });
 
-  Promise.all([ 
-    ttcBook.load(), 
-    ttcBold.load(), 
-    tosBold.load(), 
-    iawBook.load() 
-  ]).then(function(fonts) {
-    fonts.forEach(function(font) {
-      document.fonts.add(font);
-    });
-  });
-}
+//   Promise.all([ 
+//     ttcBook.load(), 
+//     ttcBold.load(), 
+//     tosBold.load(), 
+//     iawBook.load() 
+//   ]).then(function(fonts) {
+//     fonts.forEach(function(font) {
+//       document.fonts.add(font);
+//     });
+//   });
+// }
 
 /**
  * Throttle 0.0.1
