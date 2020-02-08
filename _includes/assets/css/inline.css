@@ -1,3 +1,35 @@
+@font-face {
+  font-family: 'TT Commons';
+  src: url('/static/fonts/tt-commons-book.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'TT Commons';
+  src: url('/static/fonts/tt-commons-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'Ten Oldstyle';
+  src: url('/static/fonts/ten-oldstyle-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'iA Writer Duospace';
+  src: url('/static/fonts/ia-writer-duospace-book.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+}
+
 :root {
   --transition: cubic-bezier(0.190, 1.000, 0.220, 1.000);
   --primary-text-color: hsl(225, 30%, 25%);
@@ -7,38 +39,6 @@
   --radius: 6px;
   --golden-lg: 61.8%;
   --golden-sm: 38.2%;
-}
-
-@font-face {
-  font-family: 'TT Commons';
-  src: url('/static/fonts/tt-commons-book.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'TT Commons';
-  src: url('/static/fonts/tt-commons-bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Ten Oldstyle';
-  src: url('/static/fonts/ten-oldstyle-bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'iA Writer Duospace';
-  src: url('/static/fonts/ia-writer-duospace-book.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
 }
 
 ::selection {
