@@ -386,7 +386,6 @@ h6 {
 .excerpt {
   display: block;
   position: relative;
-  height: 100%;
   width: 100%;
   max-width: 700px;
   margin: 0 auto 80px;
