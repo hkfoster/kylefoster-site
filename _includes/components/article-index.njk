@@ -1,4 +1,4 @@
-<article class="article-index">
+<section class="article-index">
 
   <figure class="background-cover">
     {# <figcaption>
@@ -24,23 +24,25 @@
   <ul class="article-list">
     {% for article in index | reverse %}
       <li class="excerpt">
-        <h1 class="heading">
-          {% if article.data.title %}
-            {{ article.data.title | safe }}
-          {% else %}
-            Untitled
+        <article class="content">
+          <h1 class="heading">
+            {% if article.data.title %}
+              {{ article.data.title | safe }}
+            {% else %}
+              Untitled
+            {% endif %}
+          </h1>
+          {% if article.data.summary %}
+            <p class="summary">
+              {{ article.data.summary }}
+            </p>
           {% endif %}
-        </h1>
-        {% if article.data.summary %}
-          <p class="summary">
-            {{ article.data.summary }}
-          </p>
-        {% endif %}
-        <span class="date">
-          <time class="date" datetime="{{ article.date | machineDate }}">{{ article.date | readableDate }}</time>
-        </span>
-        <a class="link" href="{{ article.url | url }}">Read more</a>
+          <span class="date">
+            <time class="date" datetime="{{ article.date | machineDate }}">{{ article.date | readableDate }}</time>
+          </span>
+          <a class="link" href="{{ article.url | url }}">Read more</a>
+        </article>
       </li>
     {% endfor %}
   </ul>
-</article>
+</section>
